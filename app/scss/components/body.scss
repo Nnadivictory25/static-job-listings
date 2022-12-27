@@ -1,0 +1,65 @@
+@use '../util/breakpoints.scss' as *;
+@use '../util/functions.scss' as *;
+@use '../util/mixins.scss' as *;
+
+
+body {
+    background-color: var(--gray-cyan);
+}
+
+.listingsCtn {
+
+    .card {
+        border-left: 5px solid var(--dark-cyan);
+
+        &__infoSection {
+
+            &--companyInfo {
+
+                .header {
+
+                    .companyName {
+                        color: var(--dark-cyan);
+                    }
+
+                    span {
+                        color: #fff;
+                    }
+
+                    .new {
+                        background-color: var(--dark-cyan);
+                    }
+                    .featured {
+                        background-color: var(--v-dark-gray-cyan);
+                    }
+                }
+
+                .position {
+                    @include transition;
+
+                    &:hover {
+                        color: var(--dark-cyan);
+                    }
+                }
+            }
+
+            .listingInfo {
+                color: var(--dark-gray-cyan);
+            }
+        }
+
+        &__tagsSection {
+            color: var(--dark-cyan);
+
+            button {
+                background-color: var(--gray-cyan);
+                @include transition;
+
+                &:hover {
+                    color: #fff;
+                    background-color: var(--dark-cyan);
+                }
+            }
+        }
+    }
+}

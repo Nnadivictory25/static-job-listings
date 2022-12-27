@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Job Listings</title>
+
+    <!-- custom stylesheet + script -->
+  <link rel="stylesheet" href="/dist/style.css">
+  <script defer src="/dist/script.js"></script>
+
+    <!-- bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+  <!-- google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap" rel="stylesheet">
+
+</head>
+
+  <body>
+
+    <nav>
+      <img class="hide-for-mobile w-full h-full" src="./images/bg-header-desktop.svg" alt="">
+      <img class="hide-for-desktop w-full" src="./images/bg-header-mobile.svg" alt="">
+    </nav>
+
+    <main class="listingsCtn mt-24 px-8">
+  
+        <div class="card relative flex flex-col lg:flex-row lg:justify-between bg-white rounded-md px-6 font-semibold lg:px-9 lg:items-center lg:py-5">
+          <div class="card__infoSection mt-11 lg:mt-0 lg:flex gap-x-10 items-center">
+            <img class="w-14 lg:w-24 lg:h-24 absolute lg:relative lg:top-0 top-[-20px]" src="./images/photosnap.svg" alt="">
+            <div class="card__infoSection--companyInfo self-center">
+              <div class="header flex items-center gap-x-3 py-3">
+                <p class="companyName font-semibold mr-2 text-lg">Photosnap</p>
+                <span class="uppercase new font-semibold py-1 px-3 rounded-full">New!</span>
+                <span class="uppercase featured font-semibold py-1 px-3 rounded-full">Featured</span>
+              </div>
+              <p class="position font-semibold text-lg"> Senior Frontend Developer </p>
+              <div class="listingInfo flex items-center gap-x-2 py-1">
+                <p>1d ago</p>
+                <i class="bi bi-dot"></i>
+                <p>Full Time</p>
+                <i class="bi bi-dot"></i>
+                <p>USA only</p>
+              </div>
+            </div>
+          </div>
+          <div class="card__tagsSection py-8 text-lg flex flex-wrap gap-4 ">
+            <button class="py-2 px-4 rounded-md ">Frontend</button>
+            <button class="py-2 px-4 rounded-md">Frontend</button>
+            <button class="py-2 px-4 rounded-md">Frontend</button>
+            <button class="py-2 px-4 rounded-md">Frontend</button>
+          </div>
+          <hr class="bg-gray-300 absolute w-[89%] top-44 h-[1.7px]  hide-for-desktop">
+        </div>
+    </main>
+    
+  
+
+  </body>
+</html>

@@ -1,0 +1,10 @@
+@use '../util/breakpoints.scss' as *;
+@use '../util/functions.scss' as *;
+@use '../util/mixins.scss' as *;
+
+
+nav {
+    background-color: var(--dark-cyan);
+    height: 7.5rem;
+    overflow: hidden;
+}
