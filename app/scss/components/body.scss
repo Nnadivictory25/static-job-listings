@@ -7,6 +7,38 @@ body {
     background-color: var(--gray-cyan);
 }
 
+.filtersCtn {
+    left: 50%;
+    transform: translate(-50%, 0%);
+    @include transition;
+
+    button {
+        background-color: var(--gray-cyan);
+        overflow: hidden;
+        @include transition;
+        color: var(--dark-cyan) !important;
+
+        div {
+            background-color: var(--dark-cyan);
+            @include transition;
+
+            &:hover {
+                color: #fff;
+                background-color: var(--v-dark-gray-cyan);
+            }
+        }
+    }
+
+    .clear {
+        @include transition;
+
+        &:hover {
+            color: var(--dark-cyan);
+            text-decoration: underline;
+        }
+    }
+}
+
 .listingsCtn {
 
     .card {
