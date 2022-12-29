@@ -31,7 +31,11 @@ Users should be able to:
 
 ![](./images/Screenshot%20(122).png)
 
+---
+
 ![](./images/Screenshot%20(123).png)
+
+---
 
 ![](./images/Screenshot%20(124).png)
 
