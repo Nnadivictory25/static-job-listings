@@ -5,6 +5,21 @@ const filterTagsCtn = document.querySelector('.filter')
 let searchQuery = []
 let roleArr = []
 let levelArr = []
+let loaded = true
+
+Toastify({
+    text: `Click on the tags tablet to filter jobs`,
+    duration: 3000,
+    newWindow: true,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+        background: "hsl(180, 29%, 50%)",
+        color: '#fff',
+    },
+}).showToast();
 
 
 fetch('./data.json')
@@ -84,10 +99,13 @@ let generateTags = (job) => {
 
     tagsArr.forEach(tag => {
         html += /*html*/ `
-        <button ${getFunction(tag)} class="py-2 px-4 rounded-md ">${tag}</button>
+        <button ${getFunction(tag)} class="py-2 px-4 rounded-md"><p class="animate__animated ${loaded ? 'animate__flash' : ''}">${tag}</p></button>
         `
     })
 
+    setTimeout(() => {
+        loaded = false
+    }, 1000);
     return html;
 }
 
@@ -202,8 +220,6 @@ let filterBy = (id, category) => {
           }).showToast();
     }
 
-    console.log(roleFiltered,  levelFiltered)
-
     updateUI()
 
 
@@ -230,6 +246,8 @@ let generateFilters = () => {
 
 let removeFilter = (filter) => {
     searchQuery = searchQuery.filter(query => query !== filter)
+    if (roleArr.includes(filter)) roleFiltered = false
+    if (levelArr.includes(filter)) levelFiltered = false
 
     Toastify({
         text: `${filter} have been removed !`,
@@ -293,6 +311,8 @@ let removeFilter = (filter) => {
 let clearFilter = () => {
     searchQuery = []
     filterCtn.classList.add('invisible')
+    levelFiltered = false
+    roleFiltered = false
 
     Toastify({
         text: `All filters cleared !`,
@@ -303,7 +323,8 @@ let clearFilter = () => {
         position: "right", // `left`, `center` or `right`
         stopOnFocus: true, // Prevents dismissing of toast on hover
         style: {
-            background: "linear-gradient(to right, hsl(180, 14%, 20%), hsl(180, 14%, 0%))",
+            background: "hsl(180, 29%, 50%)",
+            color: '#fff',
         },
     }).showToast();
     
@@ -313,10 +334,50 @@ let clearFilter = () => {
 let updateUI = () => { 
     let filteredJobs
     let filterPassArr = []
-    if (searchQuery.length !== 0) {
+
+    if (searchQuery.length == 0) {
+
+        mainCtn.innerHTML = ''
+
+        jobLisings.map(job => {
+            const { company, logo, 'new': isNew, featured, position, role, level, postedAt, contract, location, languages, tools } = job
+            
+            mainCtn.innerHTML += /*html*/`
+            <div data-role=${role}  data-level=${level} data-languages="${languages.join(', ')}" data-tools="${tools.length !== 0 ? tools.join(', ') : ''}" class="card relative flex flex-col lg:flex-row lg:justify-between bg-white rounded-md px-6 font-semibold lg:px-9 lg:items-center lg:py-5 my-9 shadow-lg">
+                <div class="card__infoSection mt-11 lg:mt-0 lg:flex gap-x-10 items-center">
+                <img class="w-14 lg:w-24 lg:h-24 absolute lg:relative lg:top-0 top-[-20px]" src=${logo} alt="">
+                <div class="card__infoSection--companyInfo self-center">
+                    <div class="header flex items-center gap-x-3 py-3">
+                        <p class="companyName font-semibold mr-2 text-lg">${company}</p>
+                        ${isNew ? `<span class="uppercase new font-semibold py-1 px-3 rounded-full">New!</span>
+                        ` : ''}
+                        ${featured ? `<span class="uppercase featured font-semibold py-1 px-3 rounded-full">Featured</span>
+                        ` :''}
+                    </div>
+                    <p class="position font-semibold text-lg"> ${position} </p>
+                    <div class="listingInfo flex items-center gap-x-2 py-1">
+                        <p>${postedAt}</p>
+                        <i class="bi bi-dot"></i>
+                        <p>${contract}</p>
+                        <i class="bi bi-dot"></i>
+                        <p>${location}</p>
+                    </div>
+                </div>
+                </div>
+                <div class="card__tagsSection py-8 text-lg flex flex-wrap gap-4 ">
+                    ${generateTags(job)}
+                </div>
+                <hr class="bg-gray-300 absolute w-[89%] top-44 h-[1.7px]  hide-for-desktop">
+          </div>
+            `
+        })
+
+
+    } else {
+        mainCtn.innerHTML = ''
+
         for (let i = 0; i < searchQuery.length; i++) {
             filteredJobs = jobLisings.filter(job => job.filters.includes(searchQuery[i]))
-
         }
 
         filteredJobs.map((job, index) => {
@@ -328,12 +389,43 @@ let updateUI = () => {
         })
 
         filterPassArr = filterPassArr.length > 0 ? [...new Set(filterPassArr)] : filterPassArr
-
-        // filterPassArr.forEach(i => {
-              
-        // })
+        filteredJobs = filteredJobs.filter(job => !filterPassArr.includes(filteredJobs.indexOf(job)))
     }
-
-    console.log(filteredJobs)
-    console.log(filterPassArr)
+    
+    if (filteredJobs) {
+        filteredJobs.map(job => {
+            const { company, logo, 'new': isNew, featured, position, role, level, postedAt, contract, location, languages, tools } = job
+            
+    
+            mainCtn.innerHTML += /*html*/`
+            <div data-role=${role}  data-level=${level} data-languages="${languages.join(', ')}" data-tools="${tools.length !== 0 ? tools.join(', ') : ''}" class="card relative flex flex-col lg:flex-row lg:justify-between bg-white rounded-md px-6 font-semibold lg:px-9 lg:items-center lg:py-5 my-9 shadow-lg">
+                <div class="card__infoSection mt-11 lg:mt-0 lg:flex gap-x-10 items-center">
+                <img class="w-14 lg:w-24 lg:h-24 absolute lg:relative lg:top-0 top-[-20px]" src=${logo} alt="">
+                <div class="card__infoSection--companyInfo self-center">
+                    <div class="header flex items-center gap-x-3 py-3">
+                        <p class="companyName font-semibold mr-2 text-lg">${company}</p>
+                        ${isNew ? `<span class="uppercase new font-semibold py-1 px-3 rounded-full">New!</span>
+                        ` : ''}
+                        ${featured ? `<span class="uppercase featured font-semibold py-1 px-3 rounded-full">Featured</span>
+                        ` :''}
+                    </div>
+                    <p class="position font-semibold text-lg"> ${position} </p>
+                    <div class="listingInfo flex items-center gap-x-2 py-1">
+                        <p>${postedAt}</p>
+                        <i class="bi bi-dot"></i>
+                        <p>${contract}</p>
+                        <i class="bi bi-dot"></i>
+                        <p>${location}</p>
+                    </div>
+                </div>
+                </div>
+                <div class="card__tagsSection py-8 text-lg flex flex-wrap gap-4 ">
+                    ${generateTags(job)}
+                </div>
+                <hr class="bg-gray-300 absolute w-[89%] top-44 h-[1.7px]  hide-for-desktop">
+          </div>
+            `
+        })
+    }
+    
 }
