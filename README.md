@@ -42,7 +42,7 @@ Users should be able to:
 - Live Site URL: [Click to visit live site](https://static-job-listings-vic.vercel.app/)
 
 ## My process
-
+ 
 ### Built with
 
 - Semantic HTML5 markup
