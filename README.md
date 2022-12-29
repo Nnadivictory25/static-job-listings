@@ -64,7 +64,7 @@ filteredJobs = filteredJobs.filter(job => !filterPassArr.includes(filteredJobs.i
 ```
 
 
-### Continued development
+### Continued development 
 
 Will like to work on minized coding
 
