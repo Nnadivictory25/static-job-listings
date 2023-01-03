@@ -14,7 +14,7 @@ Toastify({
     close: true,
     gravity: "top", // `top` or `bottom`
     position: "right", // `left`, `center` or `right`
-    stopOnFocus: true, // Prevents dismissing of toast on hover
+    stopOnFocus: false, // Prevents dismissing of toast on hover
     style: {
         background: "hsl(180, 29%, 50%)",
         color: '#fff',
@@ -128,7 +128,7 @@ let filterBy = (id, category) => {
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                stopOnFocus: false, // Prevents dismissing of toast on hover
                 style: {
                     background: "hsl(180, 29%, 50%)",
                     color: '#fff',
@@ -144,7 +144,7 @@ let filterBy = (id, category) => {
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                stopOnFocus: false, // Prevents dismissing of toast on hover
                 style: {
                     background: "#fff",
                     color: '#ff0000',
@@ -162,7 +162,7 @@ let filterBy = (id, category) => {
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                stopOnFocus: false, // Prevents dismissing of toast on hover
                 style: {
                     background: "hsl(180, 29%, 50%)",
                     color: '#fff',
@@ -178,7 +178,7 @@ let filterBy = (id, category) => {
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                stopOnFocus: false, // Prevents dismissing of toast on hover
                 style: {
                     background: "#fff",
                     color: '#ff0000',
@@ -195,7 +195,7 @@ let filterBy = (id, category) => {
                 close: true,
                 gravity: "top", // `top` or `bottom`
                 position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                stopOnFocus: false, // Prevents dismissing of toast on hover
                 style: {
                     background: "hsl(180, 29%, 50%)",
                     color: '#fff',
@@ -212,7 +212,7 @@ let filterBy = (id, category) => {
             close: true,
             gravity: "top", // `top` or `bottom`
             position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
+            stopOnFocus: false, // Prevents dismissing of toast on hover
             style: {
                 background: "#fff",
                 color: '#ff0000',
@@ -256,7 +256,7 @@ let removeFilter = (filter) => {
         close: true,
         gravity: "top", // `top` or `bottom`
         position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        stopOnFocus: false, // Prevents dismissing of toast on hover
         style: {
             background: "linear-gradient(to right, hsl(180, 14%, 20%), hsl(180, 14%, 20%))",
         },
@@ -321,7 +321,7 @@ let clearFilter = () => {
         close: true,
         gravity: "top", // `top` or `bottom`
         position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        stopOnFocus: false, // Prevents dismissing of toast on hover
         style: {
             background: "hsl(180, 29%, 50%)",
             color: '#fff',
