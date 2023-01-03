@@ -10,17 +10,15 @@ body {
 .filtersCtn {
     left: 50%;
     transform: translate(-50%, 0%);
-    @include transition;
 
     button {
         background-color: var(--gray-cyan);
         overflow: hidden;
-        @include transition;
         color: var(--dark-cyan) !important;
 
         div {
             background-color: var(--dark-cyan);
-            @include transition;
+            @include transition(background-color);
 
             &:hover {
                 color: #fff;
