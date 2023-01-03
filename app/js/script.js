@@ -99,7 +99,7 @@ let generateTags = (job) => {
 
     tagsArr.forEach(tag => {
         html += /*html*/ `
-        <button ${getFunction(tag)} class="py-2 px-4 rounded-md"><p class="animate__animated ${loaded ? 'animate__flash' : ''}">${tag}</p></button>
+        <button ${getFunction(tag)} class="py-2 px-4 rounded-md"><span class="animate__animated ${loaded ? 'animate__flash' : ''}">${tag}</span></button>
         `
     })
 
